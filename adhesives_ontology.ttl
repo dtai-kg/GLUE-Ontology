@@ -66,6 +66,92 @@ ado:adhesiveCost rdf:type owl:DatatypeProperty ;
                  rdfs:comment "A relation between an adhesive and the estimation of its cost (in Euros) per mililiter (ml) based on amount paid for small scale tubes." .
 
 
+###  http://w3id.org/ado/chemicalResistance
+ado:chemicalResistance rdf:type owl:DatatypeProperty ;
+                       rdfs:domain ado:AdhesiveFamily ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "A relation between an adhesive type and its relative ability to withstand chemicals" .
+
+
+###  http://w3id.org/ado/complexModulus
+ado:complexModulus rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ado:Adhesive ;
+                   rdfs:range xsd:float ;
+                   rdfs:comment "A relation between an adhesive and its resistance to deformation of the sample (in MPa)" .
+
+
+###  http://w3id.org/ado/creepResistance
+ado:creepResistance rdf:type owl:DatatypeProperty ;
+                    rdfs:domain ado:AdhesiveFamily ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A relation between an adhesive type and its relative ability to withstand creep" .
+
+
+###  http://w3id.org/ado/curingTimeEstimation
+ado:curingTimeEstimation rdf:type owl:DatatypeProperty ;
+                         rdfs:domain ado:AdhesiveFamily ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "A relation between an adhesive family and an estimation of time it requires to cure/harden" .
+
+
+###  http://w3id.org/ado/eModulus
+ado:eModulus rdf:type owl:DatatypeProperty ;
+             rdfs:domain ado:Adhesive ;
+             rdfs:range xsd:float ;
+             rdfs:comment "A relation between an adhesive and its material's elasticity (in MPa)" .
+
+
+###  http://w3id.org/ado/humidityResistance
+ado:humidityResistance rdf:type owl:DatatypeProperty ;
+                       rdfs:domain ado:AdhesiveFamily ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "A relation between an adhesive type and its relative ability to withstand humidity" .
+
+
+###  http://w3id.org/ado/idealApplicationThickness
+ado:idealApplicationThickness rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Adhesive ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between an adhesive and the ideal thickness (in mm) it should be applied" .
+
+
+###  http://w3id.org/ado/maxApplicationRelativeHumidity
+ado:maxApplicationRelativeHumidity rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain ado:AdhesiveFamily ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "A relation between an adhesive type and its maximum relative humidity percentage" .
+
+
+###  http://w3id.org/ado/maxApplicationTemperature
+ado:maxApplicationTemperature rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Adhesive ,
+                                          ado:AdhesiveFamily ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between an adhesive  or a type of adhesives and the maximum temperature (in °C) it should be applied" .
+
+
+###  http://w3id.org/ado/maxApplicationThickness
+ado:maxApplicationThickness rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:Adhesive ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between an adhesive and the maximum thickness (in mm) it should be applied" .
+
+
+###  http://w3id.org/ado/maxCuringTemperature
+ado:maxCuringTemperature rdf:type owl:DatatypeProperty ;
+                         rdfs:domain ado:AdhesiveFamily ;
+                         rdfs:range xsd:float ;
+                         rdfs:comment "A relation between an adhesive type and the maximum temperature it can be cured (in °C)" .
+
+
+###  http://w3id.org/ado/maxElongation
+ado:maxElongation rdf:type owl:DatatypeProperty ;
+                  rdfs:domain ado:Adhesive ,
+                              ado:AdhesiveFamily ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "A relation between an adhesive and its max elongation percentage" .
+
+
 ###  http://w3id.org/ado/maxGravityHardener
 ado:maxGravityHardener rdf:type owl:DatatypeProperty ;
                        rdfs:domain ado:Adhesive ;
@@ -85,6 +171,47 @@ ado:maxMixedViscosity rdf:type owl:DatatypeProperty ;
                       rdfs:domain ado:Adhesive ;
                       rdfs:range xsd:float ;
                       rdfs:comment "A relation between an adhesive and its maximum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/ado/maxOpenTime
+ado:maxOpenTime rdf:type owl:DatatypeProperty ;
+                rdfs:domain ado:Adhesive ;
+                rdfs:range xsd:float ;
+                rdfs:comment "A relation between an adhesive and amount of time (in minutes) after its application to the substrate during which it retains its ability to adhere to and bond" .
+
+
+###  http://w3id.org/ado/maxOperationalTemperature
+ado:maxOperationalTemperature rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:AdhesiveFamily ;
+                              rdfs:range xsd:float .
+
+
+###  http://w3id.org/ado/maxPolymerTransitionTemperature
+ado:maxPolymerTransitionTemperature rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain ado:Adhesive ;
+                                    rdfs:range xsd:float ;
+                                    rdfs:comment "Maximum estimated temperature at which amorphous polymers undergo a transition from glassy to rubbery state (in °C)" .
+
+
+###  http://w3id.org/ado/maxPotLife
+ado:maxPotLife rdf:type owl:DatatypeProperty ;
+               rdfs:domain ado:Adhesive ;
+               rdfs:range xsd:float ;
+               rdfs:comment "A relation between an adhesive and the maximum period of time (in minutes) during which it maintains its workable properties after it's been mixed." .
+
+
+###  http://w3id.org/ado/maxResistanceTemperature
+ado:maxResistanceTemperature rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:Adhesive ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between an adhesive and the maximum temperature it can withstand (in °C)" .
+
+
+###  http://w3id.org/ado/maxShearStrength
+ado:maxShearStrength rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ado:AdhesiveFamily ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "A relation between an adhesive type and its maximum estimated shear strength (in N/mm^2)" .
 
 
 ###  http://w3id.org/ado/maxStorageTemperature
@@ -108,6 +235,35 @@ ado:maxViscosityResin rdf:type owl:DatatypeProperty ;
                       rdfs:comment "A relation between an adhesive and its maximum viscosity of the resin in mPa.s" .
 
 
+###  http://w3id.org/ado/minApplicationRelativeHumidity
+ado:minApplicationRelativeHumidity rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain ado:AdhesiveFamily ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "A relation between an adhesive type and its minimum relative humidity percentage" .
+
+
+###  http://w3id.org/ado/minApplicationTemperature
+ado:minApplicationTemperature rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Adhesive ,
+                                          ado:AdhesiveFamily ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between an adhesive  or a type of adhesives and the minimum temperature (in °C) it should be applied" .
+
+
+###  http://w3id.org/ado/minApplicationThickness
+ado:minApplicationThickness rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:Adhesive ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between an adhesive and the minimum thickness (in mm) it should be applied." .
+
+
+###  http://w3id.org/ado/minCuringTemperature
+ado:minCuringTemperature rdf:type owl:DatatypeProperty ;
+                         rdfs:domain ado:AdhesiveFamily ;
+                         rdfs:range xsd:float ;
+                         rdfs:comment "A relation between an adhesive type and the minimum temperature it can be cured (in °C)" .
+
+
 ###  http://w3id.org/ado/minGravityHardener
 ado:minGravityHardener rdf:type owl:DatatypeProperty ;
                        rdfs:domain ado:Adhesive ;
@@ -127,6 +283,40 @@ ado:minMixedViscosity rdf:type owl:DatatypeProperty ;
                       rdfs:domain ado:Adhesive ;
                       rdfs:range xsd:float ;
                       rdfs:comment "A relation between an adhesive and its minimum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/ado/minOperationalTemperature
+ado:minOperationalTemperature rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:AdhesiveFamily ;
+                              rdfs:range xsd:float .
+
+
+###  http://w3id.org/ado/minPolymerTransitionTemperature
+ado:minPolymerTransitionTemperature rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain ado:Adhesive ;
+                                    rdfs:range xsd:float ;
+                                    rdfs:comment "Minimum estimated temperature at which amorphous polymers undergo a transition from glassy to rubbery state (in °C)" .
+
+
+###  http://w3id.org/ado/minPotLife
+ado:minPotLife rdf:type owl:DatatypeProperty ;
+               rdfs:domain ado:Adhesive ;
+               rdfs:range xsd:float ;
+               rdfs:comment "A relation between an adhesive and the minimum estimate of the period of time (in minutes) during which it maintains its workable properties after it's been mixed." .
+
+
+###  http://w3id.org/ado/minResistanceTemperature
+ado:minResistanceTemperature rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:Adhesive ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between an adhesive and the minimum temperature it can withstand (in °C)" .
+
+
+###  http://w3id.org/ado/minShearStrength
+ado:minShearStrength rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ado:AdhesiveFamily ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "A relation between an adhesive type and its minimum estimated shear strength (N/mm^2)" .
 
 
 ###  http://w3id.org/ado/minStorageTemperature
@@ -150,11 +340,32 @@ ado:minViscosityResin rdf:type owl:DatatypeProperty ;
                       rdfs:comment "A relation between an adhesive and its minimum viscosity of the resin in mPa.s" .
 
 
+###  http://w3id.org/ado/peelResistance
+ado:peelResistance rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ado:Adhesive ;
+                   rdfs:range xsd:float ;
+                   rdfs:comment "A relation between an adhesive and the peel resistance of its bonds (in N/mm)" .
+
+
+###  http://w3id.org/ado/polymerType
+ado:polymerType rdf:type owl:DatatypeProperty ;
+                rdfs:domain ado:AdhesiveFamily ;
+                rdfs:range xsd:string ;
+                rdfs:comment "A relation between an adhesive type and its polymer type" .
+
+
 ###  http://w3id.org/ado/resinHardenerRatio
 ado:resinHardenerRatio rdf:type owl:DatatypeProperty ;
                        rdfs:domain ado:Adhesive ;
                        rdfs:range xsd:float ;
                        rdfs:comment "A relation between an adhesive and its ratio between the volume of resin over the volume of hardener which should be mixed" .
+
+
+###  http://w3id.org/ado/shearStrengthDegree
+ado:shearStrengthDegree rdf:type owl:DatatypeProperty ;
+                        rdfs:domain ado:AdhesiveFamily ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "A relation between an adhesive type and the degree of its shear strength, classified as low, medium or high" .
 
 
 ###  http://w3id.org/ado/shelfLife
@@ -164,11 +375,44 @@ ado:shelfLife rdf:type owl:DatatypeProperty ;
               rdfs:comment "A relation between an adhesive and its maximum recommended time it can be stored (in months)" .
 
 
+###  http://w3id.org/ado/shockResistance
+ado:shockResistance rdf:type owl:DatatypeProperty ;
+                    rdfs:domain ado:AdhesiveFamily ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A relation between an adhesive type and its relative ability to withstand shock" .
+
+
+###  http://w3id.org/ado/thermalConductivity
+ado:thermalConductivity rdf:type owl:DatatypeProperty ;
+                        rdfs:domain ado:Adhesive ;
+                        rdfs:range xsd:float .
+
+
+###  http://w3id.org/ado/uvResistance
+ado:uvResistance rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ado:AdhesiveFamily ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "A relation between an adhesive type or a substrate and its relative ability to withstand uv radiation" .
+
+
 ###  http://w3id.org/ado/viscosityTemperatureValidity
 ado:viscosityTemperatureValidity rdf:type owl:DatatypeProperty ;
                                  rdfs:domain ado:Adhesive ;
                                  rdfs:range xsd:float ;
                                  rdfs:comment "A relation between an adhesive and the temperature validity of its viscosity in °C" .
+
+
+###  http://w3id.org/ado/waterResistance
+ado:waterResistance rdf:type owl:DatatypeProperty ;
+                    rdfs:domain ado:AdhesiveFamily ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A relation between an adhesive type and its relative ability to resist water" .
+
+
+###  http://w3id.org/ado/youngModulus
+ado:youngModulus rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ado:Adhesive ;
+                 rdfs:range xsd:float .
 
 
 #################################################################
