@@ -40,11 +40,78 @@ dcterms:title rdf:type owl:AnnotationProperty .
 schema:brand rdf:type owl:ObjectProperty .
 
 
+###  http://w3id.org/ado/adhesionQuality
+ado:adhesionQuality rdf:type owl:ObjectProperty ;
+                    rdfs:domain ado:AdhesiveFamily ;
+                    rdfs:range ado:AdhesionQuality ;
+                    rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with a material family." .
+
+
 ###  http://w3id.org/ado/adhesiveFamily
 ado:adhesiveFamily rdf:type owl:ObjectProperty ;
                    rdfs:domain ado:Adhesive ;
                    rdfs:range ado:AdhesiveFamily ;
                    rdfs:comment "A relation between an adhesive and the adhesive family it belongs to." .
+
+
+###  http://w3id.org/ado/ceramicAdhesionQuality
+ado:ceramicAdhesionQuality rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf ado:adhesionQuality ;
+                           rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with ceramics." .
+
+
+###  http://w3id.org/ado/compositeAdhesionQuality
+ado:compositeAdhesionQuality rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf ado:adhesionQuality ;
+                             rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with composites." .
+
+
+###  http://w3id.org/ado/ferroMetalAdhesionQuality
+ado:ferroMetalAdhesionQuality rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf ado:adhesionQuality ;
+                              rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with ferrous metals." .
+
+
+###  http://w3id.org/ado/glassAdhesionQuality
+ado:glassAdhesionQuality rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf ado:adhesionQuality ;
+                         rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with glass." .
+
+
+###  http://w3id.org/ado/nonFerroMetalAdhesionQuality
+ado:nonFerroMetalAdhesionQuality rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf ado:adhesionQuality ;
+                                 rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with non-ferrous metals." .
+
+
+###  http://w3id.org/ado/rubberAdhesionQuality
+ado:rubberAdhesionQuality rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ado:adhesionQuality ;
+                          rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with rubbers." .
+
+
+###  http://w3id.org/ado/steelAdhesionQuality
+ado:steelAdhesionQuality rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf ado:adhesionQuality ;
+                         rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with steel." .
+
+
+###  http://w3id.org/ado/thermoplasticAdhesionQuality
+ado:thermoplasticAdhesionQuality rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf ado:adhesionQuality ;
+                                 rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with thermoplastic." .
+
+
+###  http://w3id.org/ado/thermosetAdhesionQuality
+ado:thermosetAdhesionQuality rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf ado:adhesionQuality ;
+                             rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with thermoset." .
+
+
+###  http://w3id.org/ado/woodAdhesionQuality
+ado:woodAdhesionQuality rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf ado:adhesionQuality ;
+                        rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with wood." .
 
 
 #################################################################
