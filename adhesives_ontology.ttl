@@ -47,11 +47,25 @@ ado:adhesionQuality rdf:type owl:ObjectProperty ;
                     rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with a material family." .
 
 
+###  http://w3id.org/ado/adhesionQualityMaterialFamily
+ado:adhesionQualityMaterialFamily rdf:type owl:ObjectProperty ;
+                                  rdfs:domain ado:AdhesionQuality ;
+                                  rdfs:range ado:MaterialFamily ;
+                                  rdfs:comment "A relation between an adhesion quality estimation for an adhesive type and the material family the estimation corresponds to." .
+
+
 ###  http://w3id.org/ado/adhesiveFamily
 ado:adhesiveFamily rdf:type owl:ObjectProperty ;
                    rdfs:domain ado:Adhesive ;
                    rdfs:range ado:AdhesiveFamily ;
                    rdfs:comment "A relation between an adhesive and the adhesive family it belongs to." .
+
+
+###  http://w3id.org/ado/baseMaterial
+ado:baseMaterial rdf:type owl:ObjectProperty ;
+                 rdfs:domain ado:Substrate ;
+                 rdfs:range ado:Material ;
+                 rdfs:comment "A relation between a substrate and the base material it consists of" .
 
 
 ###  http://w3id.org/ado/ceramicAdhesionQuality
@@ -76,6 +90,13 @@ ado:ferroMetalAdhesionQuality rdf:type owl:ObjectProperty ;
 ado:glassAdhesionQuality rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf ado:adhesionQuality ;
                          rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with glass." .
+
+
+###  http://w3id.org/ado/materialFamily
+ado:materialFamily rdf:type owl:ObjectProperty ;
+                   rdfs:domain ado:Substrate ;
+                   rdfs:range ado:MaterialFamily ;
+                   rdfs:comment "A relation between a substrate and the material family it is categorized as" .
 
 
 ###  http://w3id.org/ado/nonFerroMetalAdhesionQuality
@@ -126,11 +147,33 @@ schema:color rdf:type owl:DatatypeProperty .
 schema:name rdf:type owl:DatatypeProperty .
 
 
+###  http://w3id.org/ado/adhesionQualityEstimation
+ado:adhesionQualityEstimation rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:AdhesionQuality ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment "A relation between an adhesion quality estimation entity and the relative value of the estimation" .
+
+
 ###  http://w3id.org/ado/adhesiveCost
 ado:adhesiveCost rdf:type owl:DatatypeProperty ;
                  rdfs:domain ado:Adhesive ;
                  rdfs:range xsd:float ;
                  rdfs:comment "A relation between an adhesive and the estimation of its cost (in Euros) per mililiter (ml) based on amount paid for small scale tubes." .
+
+
+###  http://w3id.org/ado/adhesiveMaxElongation
+ado:adhesiveMaxElongation rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:Adhesive ,
+                                      ado:AdhesiveFamily ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "A relation between an adhesive and its max elongation percentage" .
+
+
+###  http://w3id.org/ado/chemicalDetachability
+ado:chemicalDetachability rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:AdhesiveFamily ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "A relation between an adhesive family and its relative ability to be detached chemically" .
 
 
 ###  http://w3id.org/ado/chemicalResistance
@@ -168,6 +211,20 @@ ado:eModulus rdf:type owl:DatatypeProperty ;
              rdfs:comment "A relation between an adhesive and its material's elasticity (in MPa)" .
 
 
+###  http://w3id.org/ado/fatigueStrengthLowerBound
+ado:fatigueStrengthLowerBound rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Substrate ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between a substrate and the lower bound of the highest stress that it can withstand for 10^7 cycles without breaking (in MPa)" .
+
+
+###  http://w3id.org/ado/fatigueStrengthUpperBound
+ado:fatigueStrengthUpperBound rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Substrate ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between a substrate and the upper bound of the highest stress that it can withstand for 10^7 cycles without breaking (in MPa)" .
+
+
 ###  http://w3id.org/ado/humidityResistance
 ado:humidityResistance rdf:type owl:DatatypeProperty ;
                        rdfs:domain ado:AdhesiveFamily ;
@@ -180,6 +237,13 @@ ado:idealApplicationThickness rdf:type owl:DatatypeProperty ;
                               rdfs:domain ado:Adhesive ;
                               rdfs:range xsd:float ;
                               rdfs:comment "A relation between an adhesive and the ideal thickness (in mm) it should be applied" .
+
+
+###  http://w3id.org/ado/isMagnetic
+ado:isMagnetic rdf:type owl:DatatypeProperty ;
+               rdfs:domain ado:Substrate ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "A relation between a substrate and a value defining whether it is magnetic or not" .
 
 
 ###  http://w3id.org/ado/maxApplicationRelativeHumidity
@@ -211,12 +275,39 @@ ado:maxCuringTemperature rdf:type owl:DatatypeProperty ;
                          rdfs:comment "A relation between an adhesive type and the maximum temperature it can be cured (in °C)" .
 
 
-###  http://w3id.org/ado/maxElongation
-ado:maxElongation rdf:type owl:DatatypeProperty ;
-                  rdfs:domain ado:Adhesive ,
-                              ado:AdhesiveFamily ;
-                  rdfs:range xsd:float ;
-                  rdfs:comment "A relation between an adhesive and its max elongation percentage" .
+###  http://w3id.org/ado/maxDetachmentTemperature
+ado:maxDetachmentTemperature rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:AdhesiveFamily ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between an adhesive family and the maximum temperature that can cause separation of the bonded parts (in °C)" .
+
+
+###  http://w3id.org/ado/maxDissipationFactor
+ado:maxDissipationFactor rdf:type owl:DatatypeProperty ;
+                         rdfs:domain ado:Substrate ;
+                         rdfs:range xsd:float ;
+                         rdfs:comment "A relation between a substrate and an estimation of its maximum signal attenuation as the signal propagates down the transmission line (using dielectric loss tangent)" .
+
+
+###  http://w3id.org/ado/maxElectricalConductivity
+ado:maxElectricalConductivity rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Substrate ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between a substrate and an estimation of its maximum reciprocal of electrical resistivity (in %IACS)" .
+
+
+###  http://w3id.org/ado/maxGapFillingCapability
+ado:maxGapFillingCapability rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:AdhesiveFamily ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between an adhesive family and its maximum estimated gap filling capability (in mm)" .
+
+
+###  http://w3id.org/ado/maxGlassTemperature
+ado:maxGlassTemperature rdf:type owl:DatatypeProperty ;
+                        rdfs:domain ado:Substrate ;
+                        rdfs:range xsd:float ;
+                        rdfs:comment "A relation between a substrate and the maximum estimated temperature at which the glass transition can occur (in °C)" .
 
 
 ###  http://w3id.org/ado/maxGravityHardener
@@ -231,6 +322,13 @@ ado:maxGravityResin rdf:type owl:DatatypeProperty ;
                     rdfs:domain ado:Adhesive ;
                     rdfs:range xsd:float ;
                     rdfs:comment "A relation between an adhesive and the maximum specific gravity or density of the resin in g/cm³" .
+
+
+###  http://w3id.org/ado/maxMeltingTemperature
+ado:maxMeltingTemperature rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:Substrate ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "A relation between a substrate ant the maximum estimated temperature at which it changes state from solid to liquid (in °C)" .
 
 
 ###  http://w3id.org/ado/maxMixedViscosity
@@ -274,6 +372,13 @@ ado:maxResistanceTemperature rdf:type owl:DatatypeProperty ;
                              rdfs:comment "A relation between an adhesive and the maximum temperature it can withstand (in °C)" .
 
 
+###  http://w3id.org/ado/maxServiceTemperature
+ado:maxServiceTemperature rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:Substrate ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "A relation between a substrate and the maximum estimated temperature at which it can be used in a load-bearing component without oxidation (in °C)" .
+
+
 ###  http://w3id.org/ado/maxShearStrength
 ado:maxShearStrength rdf:type owl:DatatypeProperty ;
                      rdfs:domain ado:AdhesiveFamily ;
@@ -281,11 +386,45 @@ ado:maxShearStrength rdf:type owl:DatatypeProperty ;
                      rdfs:comment "A relation between an adhesive type and its maximum estimated shear strength (in N/mm^2)" .
 
 
+###  http://w3id.org/ado/maxSpecificHeatCapacity
+ado:maxSpecificHeatCapacity rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:Substrate ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between a substrate and the maximum estimated amount of heat that must be added to one unit of its mass to cause an increase of one unit of temperature (in J/kg°C)" .
+
+
 ###  http://w3id.org/ado/maxStorageTemperature
 ado:maxStorageTemperature rdf:type owl:DatatypeProperty ;
                           rdfs:domain ado:Adhesive ;
                           rdfs:range xsd:float ;
                           rdfs:comment "A relation between an adhesive and its maximum recommended storage temperature in °C" .
+
+
+###  http://w3id.org/ado/maxSubstrateCost
+ado:maxSubstrateCost rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ado:Substrate ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "A relation between a substrate and the maximum estimated cost to acquire a kilo of it in euros." .
+
+
+###  http://w3id.org/ado/maxThermalConductivity
+ado:maxThermalConductivity rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf ado:thermalConductivity ;
+                           rdfs:comment "A relation between an adhesive or a substrate and a minimum estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/ado/maxThermalExpansionCoefficient
+ado:maxThermalExpansionCoefficient rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain ado:Substrate ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "A relation between a substrate and an estimation of the maximum tendency of its matter to increase in length area, or volume in response to an increase in temperature (in μstrain/°C)" .
+
+
+###  http://w3id.org/ado/maxToughness
+ado:maxToughness rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ado:Substrate ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "A relation between a substrate and the maximum estimation of its ability to absorb energy and plastically deform without fracturing (in kJ/m^2)" .
 
 
 ###  http://w3id.org/ado/maxViscosityHardener
@@ -300,6 +439,13 @@ ado:maxViscosityResin rdf:type owl:DatatypeProperty ;
                       rdfs:domain ado:Adhesive ;
                       rdfs:range xsd:float ;
                       rdfs:comment "A relation between an adhesive and its maximum viscosity of the resin in mPa.s" .
+
+
+###  http://w3id.org/ado/mechanicalDetachability
+ado:mechanicalDetachability rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:AdhesiveFamily ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "A relation between an adhesive family and its relative ability to be detached mechanically" .
 
 
 ###  http://w3id.org/ado/minApplicationRelativeHumidity
@@ -331,6 +477,41 @@ ado:minCuringTemperature rdf:type owl:DatatypeProperty ;
                          rdfs:comment "A relation between an adhesive type and the minimum temperature it can be cured (in °C)" .
 
 
+###  http://w3id.org/ado/minDetachmentTemperature
+ado:minDetachmentTemperature rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:AdhesiveFamily ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between an adhesive family and the minimum temperature that can cause separation of the bonded parts (in °C)" .
+
+
+###  http://w3id.org/ado/minDissipationFactor
+ado:minDissipationFactor rdf:type owl:DatatypeProperty ;
+                         rdfs:domain ado:Substrate ;
+                         rdfs:range xsd:float ;
+                         rdfs:comment "A relation between a substrate and an estimation of its minimum signal attenuation as the signal propagates down the transmission line (using dielectric loss tangent)" .
+
+
+###  http://w3id.org/ado/minElectricalConductivity
+ado:minElectricalConductivity rdf:type owl:DatatypeProperty ;
+                              rdfs:domain ado:Substrate ;
+                              rdfs:range xsd:float ;
+                              rdfs:comment "A relation between a substrate and an estimation of its minimum reciprocal of electrical resistivity (in %IACS)" .
+
+
+###  http://w3id.org/ado/minGapFillingCapability
+ado:minGapFillingCapability rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:AdhesiveFamily ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between an adhesive family and its minimum estimated gap filling capability (in mm)" .
+
+
+###  http://w3id.org/ado/minGlassTemperature
+ado:minGlassTemperature rdf:type owl:DatatypeProperty ;
+                        rdfs:domain ado:Substrate ;
+                        rdfs:range xsd:float ;
+                        rdfs:comment "A relation between a substrate and the minimum estimated temperature at which the glass transition can occur (in °C)" .
+
+
 ###  http://w3id.org/ado/minGravityHardener
 ado:minGravityHardener rdf:type owl:DatatypeProperty ;
                        rdfs:domain ado:Adhesive ;
@@ -343,6 +524,13 @@ ado:minGravityResin rdf:type owl:DatatypeProperty ;
                     rdfs:domain ado:Adhesive ;
                     rdfs:range xsd:float ;
                     rdfs:comment "A relation between an adhesive and the minimum specific gravity or density of the resin in g/cm³" .
+
+
+###  http://w3id.org/ado/minMeltingTemperature
+ado:minMeltingTemperature rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:Substrate ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "A relation between a substrate ant the minimum estimated temperature at which it changes state from solid to liquid (in °C)" .
 
 
 ###  http://w3id.org/ado/minMixedViscosity
@@ -379,6 +567,13 @@ ado:minResistanceTemperature rdf:type owl:DatatypeProperty ;
                              rdfs:comment "A relation between an adhesive and the minimum temperature it can withstand (in °C)" .
 
 
+###  http://w3id.org/ado/minServiceTemperature
+ado:minServiceTemperature rdf:type owl:DatatypeProperty ;
+                          rdfs:domain ado:Substrate ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "A relation between a substrate and the minimum estimated temperature at which it can be used in a load-bearing component without oxidation (in °C)" .
+
+
 ###  http://w3id.org/ado/minShearStrength
 ado:minShearStrength rdf:type owl:DatatypeProperty ;
                      rdfs:domain ado:AdhesiveFamily ;
@@ -386,11 +581,45 @@ ado:minShearStrength rdf:type owl:DatatypeProperty ;
                      rdfs:comment "A relation between an adhesive type and its minimum estimated shear strength (N/mm^2)" .
 
 
+###  http://w3id.org/ado/minSpecificHeatCapacity
+ado:minSpecificHeatCapacity rdf:type owl:DatatypeProperty ;
+                            rdfs:domain ado:Substrate ;
+                            rdfs:range xsd:float ;
+                            rdfs:comment "A relation between a substrate and the minimum estimated amount of heat that must be added to one unit of its mass to cause an increase of one unit of temperature (in J/kg°C)" .
+
+
 ###  http://w3id.org/ado/minStorageTemperature
 ado:minStorageTemperature rdf:type owl:DatatypeProperty ;
                           rdfs:domain ado:Adhesive ;
                           rdfs:range xsd:float ;
                           rdfs:comment "A relation between an adhesive and its minimum recommended storage temperature in °C" .
+
+
+###  http://w3id.org/ado/minSubstrateCost
+ado:minSubstrateCost rdf:type owl:DatatypeProperty ;
+                     rdfs:domain ado:Substrate ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "A relation between a substrate and the minimum estimated cost to acquire a kilo of it in euros" .
+
+
+###  http://w3id.org/ado/minThermalConductivity
+ado:minThermalConductivity rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf ado:thermalConductivity ;
+                           rdfs:comment "A relation between an adhesive or a substrate and a maximum estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/ado/minThermalExpansionCoefficient
+ado:minThermalExpansionCoefficient rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain ado:Substrate ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "A relation between a substrate and an estimation of the minimum tendency of its matter to increase in length area, or volume in response to an increase in temperature (in μstrain/°C)" .
+
+
+###  http://w3id.org/ado/minToughness
+ado:minToughness rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ado:Substrate ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "A relation between a substrate and the minimum estimation of its ability to absorb energy and plastically deform without fracturing (in kJ/m^2)" .
 
 
 ###  http://w3id.org/ado/minViscosityHardener
@@ -428,6 +657,13 @@ ado:resinHardenerRatio rdf:type owl:DatatypeProperty ;
                        rdfs:comment "A relation between an adhesive and its ratio between the volume of resin over the volume of hardener which should be mixed" .
 
 
+###  http://w3id.org/ado/sealingQuality
+ado:sealingQuality rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ado:AdhesiveFamily ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "A relation between an adhesive family and its relative effectiveness in preventing the passage of air, moisture, dust or other substances through a bonded joint" .
+
+
 ###  http://w3id.org/ado/shearStrengthDegree
 ado:shearStrengthDegree rdf:type owl:DatatypeProperty ;
                         rdfs:domain ado:AdhesiveFamily ;
@@ -449,10 +685,61 @@ ado:shockResistance rdf:type owl:DatatypeProperty ;
                     rdfs:comment "A relation between an adhesive type and its relative ability to withstand shock" .
 
 
+###  http://w3id.org/ado/substrateMaxElongation
+ado:substrateMaxElongation rdf:type owl:DatatypeProperty ;
+                           rdfs:domain ado:Substrate ;
+                           rdfs:range xsd:float ;
+                           rdfs:comment "A relation between a substrate and the its maximum ductility. It is expressed as a percentage, and it is the maximum ratio of change in axial length with the application of a tensile force to the original length of the specimen" .
+
+
+###  http://w3id.org/ado/substrateMaxYoungModulus
+ado:substrateMaxYoungModulus rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:Substrate ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between a substrate and the maximum estimated tensile or compressive stiffness when the force is applied lengthwise (in GPa)" .
+
+
+###  http://w3id.org/ado/substrateMinElongation
+ado:substrateMinElongation rdf:type owl:DatatypeProperty ;
+                           rdfs:domain ado:Substrate ;
+                           rdfs:range xsd:float ;
+                           rdfs:comment "A relation between a substrate and the its minimum ductility. It is expressed as a percentage, and it is the minimum ratio of change in axial length with the application of a tensile force to the original length of the specimen" .
+
+
+###  http://w3id.org/ado/substrateMinYoungModulus
+ado:substrateMinYoungModulus rdf:type owl:DatatypeProperty ;
+                             rdfs:domain ado:Substrate ;
+                             rdfs:range xsd:float ;
+                             rdfs:comment "A relation between a substrate and the minimum estimated tensile or compressive stiffness when the force is applied lengthwise (in GPa)" .
+
+
+###  http://w3id.org/ado/substrateTensileStrengthLowerBound
+ado:substrateTensileStrengthLowerBound rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain ado:Substrate ;
+                                       rdfs:range xsd:float ;
+                                       rdfs:comment "A relation between a substrate and the lower bound of the maximum amount of stress it can withstand while being stretched or pulled before breaking (in MPa)" .
+
+
+###  http://w3id.org/ado/substrateTensileStrengthUpperBound
+ado:substrateTensileStrengthUpperBound rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain ado:Substrate ;
+                                       rdfs:range xsd:float ;
+                                       rdfs:comment "A relation between a substrate and the upper bound of the maximum amount of stress it can withstand while being stretched or pulled before breaking (in MPa)" .
+
+
 ###  http://w3id.org/ado/thermalConductivity
 ado:thermalConductivity rdf:type owl:DatatypeProperty ;
-                        rdfs:domain ado:Adhesive ;
-                        rdfs:range xsd:float .
+                        rdfs:domain ado:Adhesive ,
+                                    ado:Substrate ;
+                        rdfs:range xsd:float ;
+                        rdfs:comment "A relation between an adhesive or a substrate and an estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/ado/transparency
+ado:transparency rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ado:Substrate ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "A relation between a substrate and a its quality of allowing light to pass through so that objects behind can be distinctly seen" .
 
 
 ###  http://w3id.org/ado/uvResistance
@@ -460,6 +747,13 @@ ado:uvResistance rdf:type owl:DatatypeProperty ;
                  rdfs:domain ado:AdhesiveFamily ;
                  rdfs:range xsd:string ;
                  rdfs:comment "A relation between an adhesive type or a substrate and its relative ability to withstand uv radiation" .
+
+
+###  http://w3id.org/ado/vibrationsDamping
+ado:vibrationsDamping rdf:type owl:DatatypeProperty ;
+                      rdfs:domain ado:AdhesiveFamily ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "A relation between an adhesive family and its relative ability to absorve vibrational energy" .
 
 
 ###  http://w3id.org/ado/viscosityTemperatureValidity
@@ -495,40 +789,49 @@ schema:Product rdf:type owl:Class .
 
 
 ###  http://w3id.org/ado/AdhesionApplication
-ado:AdhesionApplication rdf:type owl:Class .
+ado:AdhesionApplication rdf:type owl:Class ;
+                        rdfs:comment "A task that an addhesive is typically used in." .
 
 
 ###  http://w3id.org/ado/AdhesionQuality
-ado:AdhesionQuality rdf:type owl:Class .
+ado:AdhesionQuality rdf:type owl:Class ;
+                    rdfs:comment "A quality estimation of an adhesive type" .
 
 
 ###  http://w3id.org/ado/Adhesive
 ado:Adhesive rdf:type owl:Class ;
-             rdfs:subClassOf schema:Product .
+             rdfs:subClassOf schema:Product ;
+             rdfs:comment "A non-metallic substance applied to one or both surface of two separate items that binds them together and resists their separation" .
 
 
 ###  http://w3id.org/ado/AdhesiveFamily
-ado:AdhesiveFamily rdf:type owl:Class .
-
-
-###  http://w3id.org/ado/BaseMaterial
-ado:BaseMaterial rdf:type owl:Class .
+ado:AdhesiveFamily rdf:type owl:Class ;
+                   rdfs:comment "A family of common adhesives, categorized by method of adhesion." .
 
 
 ###  http://w3id.org/ado/Industry
-ado:Industry rdf:type owl:Class .
+ado:Industry rdf:type owl:Class ;
+             rdfs:comment "A generally categorized brand of economic activity" .
+
+
+###  http://w3id.org/ado/Material
+ado:Material rdf:type owl:Class ;
+             rdfs:comment "The matter from which a substrate primarily consists of" .
 
 
 ###  http://w3id.org/ado/MaterialFamily
-ado:MaterialFamily rdf:type owl:Class .
+ado:MaterialFamily rdf:type owl:Class ;
+                   rdfs:comment "A category of materials that a substrate belongs in" .
 
 
 ###  http://w3id.org/ado/Solvent
-ado:Solvent rdf:type owl:Class .
+ado:Solvent rdf:type owl:Class ;
+            rdfs:comment "A substance that dissolves a solute, resulting in a solution" .
 
 
 ###  http://w3id.org/ado/Substrate
-ado:Substrate rdf:type owl:Class .
+ado:Substrate rdf:type owl:Class ;
+              rdfs:comment "A material surface" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
