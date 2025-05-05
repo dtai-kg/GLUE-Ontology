@@ -1,0 +1,931 @@
+@prefix : <http://w3id.org/glue#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/glue#> .
+
+<http://w3id.org/glue> rdf:type owl:Ontology ;
+                        <http://purl.org/dc/terms/abstract> "An ontology that describes adhesives, related substrates, materials and applications."@en ;
+                        <http://purl.org/dc/terms/created> "March 30th, 2025"@en ;
+                        <http://purl.org/dc/terms/creator> "Anastasia Dimou"@en ,
+                                                           "Ioannis Dasoulas"@en ,
+                                                           "Jeroen Jordens"@en ,
+                                                           "Simon Vandevalle"@en ;
+                        <http://purl.org/dc/terms/license> "http://creativecommons.org/licenses/by/2.0/"^^xsd:anyURI ;
+                        <http://purl.org/dc/terms/title> "GLUE Ontology"@en ;
+                        owl:versionInfo "1.0.0"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/abstract
+<http://purl.org/dc/terms/abstract> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://schema.org/brand
+<http://schema.org/brand> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/glue/adhesionApplication
+<http://w3id.org/glue/adhesionApplication> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                           rdfs:range <http://w3id.org/glue/AdhesionApplication> ;
+                                           rdfs:comment "A relation between an adhesive family and a type of application it is commonly used in" .
+
+
+###  http://w3id.org/glue/adhesionQuality
+<http://w3id.org/glue/adhesionQuality> rdf:type owl:ObjectProperty ;
+                                       rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                       rdfs:range <http://w3id.org/glue/AdhesionQuality> ;
+                                       rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with a material family." .
+
+
+###  http://w3id.org/glue/adhesionQualityMaterialFamily
+<http://w3id.org/glue/adhesionQualityMaterialFamily> rdf:type owl:ObjectProperty ;
+                                                     rdfs:domain <http://w3id.org/glue/AdhesionQuality> ;
+                                                     rdfs:range <http://w3id.org/glue/MaterialFamily> ;
+                                                     rdfs:comment "A relation between an adhesion quality estimation for an adhesive type and the material family the estimation corresponds to." .
+
+
+###  http://w3id.org/glue/adhesiveFamily
+<http://w3id.org/glue/adhesiveFamily> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                      rdfs:range <http://w3id.org/glue/AdhesiveFamily> ;
+                                      rdfs:comment "A relation between an adhesive and the adhesive family it belongs to." .
+
+
+###  http://w3id.org/glue/baseMaterial
+<http://w3id.org/glue/baseMaterial> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                    rdfs:range <https://w3id.org/pmd/co/PMD_0000000> ;
+                                    rdfs:comment "A relation between a substrate and the base material it consists of" .
+
+
+###  http://w3id.org/glue/ceramicAdhesionQuality
+<http://w3id.org/glue/ceramicAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                              rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with ceramics." .
+
+
+###  http://w3id.org/glue/compositeAdhesionQuality
+<http://w3id.org/glue/compositeAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                                rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with composites." .
+
+
+###  http://w3id.org/glue/ferroMetalAdhesionQuality
+<http://w3id.org/glue/ferroMetalAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                                 rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with ferrous metals." .
+
+
+###  http://w3id.org/glue/glassAdhesionQuality
+<http://w3id.org/glue/glassAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                            rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with glass." .
+
+
+###  http://w3id.org/glue/industry
+<http://w3id.org/glue/industry> rdf:type owl:ObjectProperty ;
+                                rdfs:domain <http://w3id.org/glue/AdhesionApplication> ;
+                                rdfs:range <http://w3id.org/glue/Industry> ;
+                                rdfs:comment "A relation between an adhesion application and an industry it is commonly applied" .
+
+
+###  http://w3id.org/glue/materialFamily
+<http://w3id.org/glue/materialFamily> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                      rdfs:range <http://w3id.org/glue/MaterialFamily> ;
+                                      rdfs:comment "A relation between a substrate and the material family it is categorized as" .
+
+
+###  http://w3id.org/glue/nonFerroMetalAdhesionQuality
+<http://w3id.org/glue/nonFerroMetalAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                                    rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with non-ferrous metals." .
+
+
+###  http://w3id.org/glue/resistantToSolvent
+<http://w3id.org/glue/resistantToSolvent> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                          rdfs:range <http://w3id.org/glue/Solvent> ;
+                                          rdfs:comment "A relation between an adhesive and a solvent it is resistant to" .
+
+
+###  http://w3id.org/glue/rubberAdhesionQuality
+<http://w3id.org/glue/rubberAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                             rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with rubbers." .
+
+
+###  http://w3id.org/glue/steelAdhesionQuality
+<http://w3id.org/glue/steelAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                            rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with steel." .
+
+
+###  http://w3id.org/glue/thermoplasticAdhesionQuality
+<http://w3id.org/glue/thermoplasticAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                                    rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with thermoplastic." .
+
+
+###  http://w3id.org/glue/thermosetAdhesionQuality
+<http://w3id.org/glue/thermosetAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                                rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with thermoset." .
+
+
+###  http://w3id.org/glue/woodAdhesionQuality
+<http://w3id.org/glue/woodAdhesionQuality> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf <http://w3id.org/glue/adhesionQuality> ;
+                                           rdfs:comment "A relation between an adhesive type and the quality of adhesion it achieves with wood." .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://schema.org/color
+<http://schema.org/color> rdf:type owl:DatatypeProperty .
+
+
+###  http://schema.org/name
+<http://schema.org/name> rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/glue/adhesionQualityEstimation
+<http://w3id.org/glue/adhesionQualityEstimation> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/AdhesionQuality> ;
+                                                 rdfs:range xsd:string ;
+                                                 rdfs:comment "A relation between an adhesion quality estimation entity and the relative value of the estimation" .
+
+
+###  http://w3id.org/glue/adhesiveCost
+<http://w3id.org/glue/adhesiveCost> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                    rdfs:range xsd:float ;
+                                    rdfs:comment "A relation between an adhesive and the estimation of its cost (in Euros) per mililiter (ml) based on amount paid for small scale tubes." .
+
+
+###  http://w3id.org/glue/adhesiveMaxElongation
+<http://w3id.org/glue/adhesiveMaxElongation> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Adhesive> ,
+                                                         <http://w3id.org/glue/AdhesiveFamily> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between an adhesive and its max elongation percentage" .
+
+
+###  http://w3id.org/glue/chemicalDetachability
+<http://w3id.org/glue/chemicalDetachability> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:comment "A relation between an adhesive family and its relative ability to be detached chemically" .
+
+
+###  http://w3id.org/glue/chemicalResistance
+<http://w3id.org/glue/chemicalResistance> rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                          rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand chemicals" .
+
+
+###  http://w3id.org/glue/complexModulus
+<http://w3id.org/glue/complexModulus> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                      rdfs:range xsd:float ;
+                                      rdfs:comment "A relation between an adhesive and its resistance to deformation of the sample (in MPa)" .
+
+
+###  http://w3id.org/glue/creepResistance
+<http://w3id.org/glue/creepResistance> rdf:type owl:DatatypeProperty ;
+                                       rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                       rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand creep" .
+
+
+###  http://w3id.org/glue/curingTimeEstimation
+<http://w3id.org/glue/curingTimeEstimation> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                            rdfs:range xsd:string ;
+                                            rdfs:comment "A relation between an adhesive family and an estimation of time it requires to cure/harden" .
+
+
+###  http://w3id.org/glue/eModulus
+<http://w3id.org/glue/eModulus> rdf:type owl:DatatypeProperty ;
+                                rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                rdfs:range xsd:float ;
+                                rdfs:comment "A relation between an adhesive and its material's elasticity (in MPa)" .
+
+
+###  http://w3id.org/glue/environmentalResistance
+<http://w3id.org/glue/environmentalResistance> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ,
+                                                           <http://w3id.org/glue/Substrate> ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:comment "A relation between an adhesive type or a substrate and its relative ability to withstand environmental conditions" .
+
+
+###  http://w3id.org/glue/fatigueStrengthLowerBound
+<http://w3id.org/glue/fatigueStrengthLowerBound> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and the lower bound of the highest stress that it can withstand for 10^7 cycles without breaking (in MPa)" .
+
+
+###  http://w3id.org/glue/fatigueStrengthUpperBound
+<http://w3id.org/glue/fatigueStrengthUpperBound> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and the upper bound of the highest stress that it can withstand for 10^7 cycles without breaking (in MPa)" .
+
+
+###  http://w3id.org/glue/freshWaterResistance
+<http://w3id.org/glue/freshWaterResistance> rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                            rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand fresh water" .
+
+
+###  http://w3id.org/glue/humidityResistance
+<http://w3id.org/glue/humidityResistance> rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                          rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand humidity" .
+
+
+###  http://w3id.org/glue/idealApplicationThickness
+<http://w3id.org/glue/idealApplicationThickness> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between an adhesive and the ideal thickness (in mm) it should be applied" .
+
+
+###  http://w3id.org/glue/isMagnetic
+<http://w3id.org/glue/isMagnetic> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                  rdfs:range xsd:boolean ;
+                                  rdfs:comment "A relation between a substrate and a value defining whether it is magnetic or not" .
+
+
+###  http://w3id.org/glue/maxApplicationRelativeHumidity
+<http://w3id.org/glue/maxApplicationRelativeHumidity> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                      rdfs:range xsd:float ;
+                                                      rdfs:comment "A relation between an adhesive type and its maximum relative humidity percentage" .
+
+
+###  http://w3id.org/glue/maxApplicationTemperature
+<http://w3id.org/glue/maxApplicationTemperature> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Adhesive> ,
+                                                             <http://w3id.org/glue/AdhesiveFamily> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between an adhesive  or a type of adhesives and the maximum temperature (in °C) it should be applied" .
+
+
+###  http://w3id.org/glue/maxApplicationThickness
+<http://w3id.org/glue/maxApplicationThickness> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between an adhesive and the maximum thickness (in mm) it should be applied" .
+
+
+###  http://w3id.org/glue/maxCuringTemperature
+<http://w3id.org/glue/maxCuringTemperature> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between an adhesive type and the maximum temperature it can be cured (in °C)" .
+
+
+###  http://w3id.org/glue/maxDetachmentTemperature
+<http://w3id.org/glue/maxDetachmentTemperature> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between an adhesive family and the maximum temperature that can cause separation of the bonded parts (in °C)" .
+
+
+###  http://w3id.org/glue/maxDissipationFactor
+<http://w3id.org/glue/maxDissipationFactor> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between a substrate and an estimation of its maximum signal attenuation as the signal propagates down the transmission line (using dielectric loss tangent)" .
+
+
+###  http://w3id.org/glue/maxElectricalConductivity
+<http://w3id.org/glue/maxElectricalConductivity> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and an estimation of its maximum reciprocal of electrical resistivity (in %IACS)" .
+
+
+###  http://w3id.org/glue/maxGapFillingCapability
+<http://w3id.org/glue/maxGapFillingCapability> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between an adhesive family and its maximum estimated gap filling capability (in mm)" .
+
+
+###  http://w3id.org/glue/maxGlassTemperature
+<http://w3id.org/glue/maxGlassTemperature> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                           rdfs:range xsd:float ;
+                                           rdfs:comment "A relation between a substrate and the maximum estimated temperature at which the glass transition can occur (in °C)" .
+
+
+###  http://w3id.org/glue/maxGravityHardener
+<http://w3id.org/glue/maxGravityHardener> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                          rdfs:range xsd:float ;
+                                          rdfs:comment "A relation between an adhesive and the maximum specific gravity or density of the hardener in g/cm³" .
+
+
+###  http://w3id.org/glue/maxGravityResin
+<http://w3id.org/glue/maxGravityResin> rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                       rdfs:range xsd:float ;
+                                       rdfs:comment "A relation between an adhesive and the maximum specific gravity or density of the resin in g/cm³" .
+
+
+###  http://w3id.org/glue/maxMeltingTemperature
+<http://w3id.org/glue/maxMeltingTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between a substrate ant the maximum estimated temperature at which it changes state from solid to liquid (in °C)" .
+
+
+###  http://w3id.org/glue/maxMixedViscosity
+<http://w3id.org/glue/maxMixedViscosity> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                         rdfs:range xsd:float ;
+                                         rdfs:comment "A relation between an adhesive and its maximum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/glue/maxOpenTime
+<http://w3id.org/glue/maxOpenTime> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:comment "A relation between an adhesive and amount of time (in minutes) after its application to the substrate during which it retains its ability to adhere to and bond" .
+
+
+###  http://w3id.org/glue/maxOperationalTemperature
+<http://w3id.org/glue/maxOperationalTemperature> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                 rdfs:range xsd:float .
+
+
+###  http://w3id.org/glue/maxPolymerTransitionTemperature
+<http://w3id.org/glue/maxPolymerTransitionTemperature> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                       rdfs:range xsd:float ;
+                                                       rdfs:comment "Maximum estimated temperature at which amorphous polymers undergo a transition from glassy to rubbery state (in °C)" .
+
+
+###  http://w3id.org/glue/maxPotLife
+<http://w3id.org/glue/maxPotLife> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                  rdfs:range xsd:float ;
+                                  rdfs:comment "A relation between an adhesive and the maximum period of time (in minutes) during which it maintains its workable properties after it's been mixed." .
+
+
+###  http://w3id.org/glue/maxResistanceTemperature
+<http://w3id.org/glue/maxResistanceTemperature> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between an adhesive and the maximum temperature it can withstand (in °C)" .
+
+
+###  http://w3id.org/glue/maxServiceTemperature
+<http://w3id.org/glue/maxServiceTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between a substrate and the maximum estimated temperature at which it can be used in a load-bearing component without oxidation (in °C)" .
+
+
+###  http://w3id.org/glue/maxShearStrength
+<http://w3id.org/glue/maxShearStrength> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                        rdfs:range xsd:float ;
+                                        rdfs:comment "A relation between an adhesive type and its maximum estimated shear strength (in N/mm^2)" .
+
+
+###  http://w3id.org/glue/maxSpecificHeatCapacity
+<http://w3id.org/glue/maxSpecificHeatCapacity> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between a substrate and the maximum estimated amount of heat that must be added to one unit of its mass to cause an increase of one unit of temperature (in J/kg°C)" .
+
+
+###  http://w3id.org/glue/maxStorageTemperature
+<http://w3id.org/glue/maxStorageTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between an adhesive and its maximum recommended storage temperature in °C" .
+
+
+###  http://w3id.org/glue/maxSubstrateCost
+<http://w3id.org/glue/maxSubstrateCost> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                        rdfs:range xsd:float ;
+                                        rdfs:comment "A relation between a substrate and the maximum estimated cost to acquire a kilo of it in euros." .
+
+
+###  http://w3id.org/glue/maxThermalConductivity
+<http://w3id.org/glue/maxThermalConductivity> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://w3id.org/glue/thermalConductivity> ;
+                                              rdfs:comment "A relation between an adhesive or a substrate and a minimum estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/glue/maxThermalExpansionCoefficient
+<http://w3id.org/glue/maxThermalExpansionCoefficient> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                      rdfs:range xsd:float ;
+                                                      rdfs:comment "A relation between a substrate and an estimation of the maximum tendency of its matter to increase in length area, or volume in response to an increase in temperature (in μstrain/°C)" .
+
+
+###  http://w3id.org/glue/maxToughness
+<http://w3id.org/glue/maxToughness> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                    rdfs:range xsd:float ;
+                                    rdfs:comment "A relation between a substrate and the maximum estimation of its ability to absorb energy and plastically deform without fracturing (in kJ/m^2)" .
+
+
+###  http://w3id.org/glue/maxViscosityHardener
+<http://w3id.org/glue/maxViscosityHardener> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between an adhesive and its maximum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/glue/maxViscosityResin
+<http://w3id.org/glue/maxViscosityResin> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                         rdfs:range xsd:float ;
+                                         rdfs:comment "A relation between an adhesive and its maximum viscosity of the resin in mPa.s" .
+
+
+###  http://w3id.org/glue/maxWaterAbsorption
+<http://w3id.org/glue/maxWaterAbsorption> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                          rdfs:range xsd:float ;
+                                          rdfs:comment "A relation between a substrate and a maximum estimation of its ability to absorb water when immersed in it measured in percentage of water it absorbs in 24 hours" .
+
+
+###  http://w3id.org/glue/maxWaterVaporTransmission
+<http://w3id.org/glue/maxWaterVaporTransmission> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and a maximum estimation of the passage of water vapor through it (in g*mm/m^2*day)" .
+
+
+###  http://w3id.org/glue/mechanicalDetachability
+<http://w3id.org/glue/mechanicalDetachability> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:comment "A relation between an adhesive family and its relative ability to be detached mechanically" .
+
+
+###  http://w3id.org/glue/minApplicationRelativeHumidity
+<http://w3id.org/glue/minApplicationRelativeHumidity> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                      rdfs:range xsd:float ;
+                                                      rdfs:comment "A relation between an adhesive type and its minimum relative humidity percentage" .
+
+
+###  http://w3id.org/glue/minApplicationTemperature
+<http://w3id.org/glue/minApplicationTemperature> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Adhesive> ,
+                                                             <http://w3id.org/glue/AdhesiveFamily> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between an adhesive  or a type of adhesives and the minimum temperature (in °C) it should be applied" .
+
+
+###  http://w3id.org/glue/minApplicationThickness
+<http://w3id.org/glue/minApplicationThickness> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between an adhesive and the minimum thickness (in mm) it should be applied." .
+
+
+###  http://w3id.org/glue/minCuringTemperature
+<http://w3id.org/glue/minCuringTemperature> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between an adhesive type and the minimum temperature it can be cured (in °C)" .
+
+
+###  http://w3id.org/glue/minDetachmentTemperature
+<http://w3id.org/glue/minDetachmentTemperature> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between an adhesive family and the minimum temperature that can cause separation of the bonded parts (in °C)" .
+
+
+###  http://w3id.org/glue/minDissipationFactor
+<http://w3id.org/glue/minDissipationFactor> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between a substrate and an estimation of its minimum signal attenuation as the signal propagates down the transmission line (using dielectric loss tangent)" .
+
+
+###  http://w3id.org/glue/minElectricalConductivity
+<http://w3id.org/glue/minElectricalConductivity> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and an estimation of its minimum reciprocal of electrical resistivity (in %IACS)" .
+
+
+###  http://w3id.org/glue/minGapFillingCapability
+<http://w3id.org/glue/minGapFillingCapability> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between an adhesive family and its minimum estimated gap filling capability (in mm)" .
+
+
+###  http://w3id.org/glue/minGlassTemperature
+<http://w3id.org/glue/minGlassTemperature> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                           rdfs:range xsd:float ;
+                                           rdfs:comment "A relation between a substrate and the minimum estimated temperature at which the glass transition can occur (in °C)" .
+
+
+###  http://w3id.org/glue/minGravityHardener
+<http://w3id.org/glue/minGravityHardener> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                          rdfs:range xsd:float ;
+                                          rdfs:comment "A relation between an adhesive and the minimum specific gravity or density of the hardener in g/cm³" .
+
+
+###  http://w3id.org/glue/minGravityResin
+<http://w3id.org/glue/minGravityResin> rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                       rdfs:range xsd:float ;
+                                       rdfs:comment "A relation between an adhesive and the minimum specific gravity or density of the resin in g/cm³" .
+
+
+###  http://w3id.org/glue/minMeltingTemperature
+<http://w3id.org/glue/minMeltingTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between a substrate ant the minimum estimated temperature at which it changes state from solid to liquid (in °C)" .
+
+
+###  http://w3id.org/glue/minMixedViscosity
+<http://w3id.org/glue/minMixedViscosity> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                         rdfs:range xsd:float ;
+                                         rdfs:comment "A relation between an adhesive and its minimum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/glue/minOperationalTemperature
+<http://w3id.org/glue/minOperationalTemperature> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                                 rdfs:range xsd:float .
+
+
+###  http://w3id.org/glue/minPolymerTransitionTemperature
+<http://w3id.org/glue/minPolymerTransitionTemperature> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                       rdfs:range xsd:float ;
+                                                       rdfs:comment "Minimum estimated temperature at which amorphous polymers undergo a transition from glassy to rubbery state (in °C)" .
+
+
+###  http://w3id.org/glue/minPotLife
+<http://w3id.org/glue/minPotLife> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                  rdfs:range xsd:float ;
+                                  rdfs:comment "A relation between an adhesive and the minimum estimate of the period of time (in minutes) during which it maintains its workable properties after it's been mixed." .
+
+
+###  http://w3id.org/glue/minResistanceTemperature
+<http://w3id.org/glue/minResistanceTemperature> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between an adhesive and the minimum temperature it can withstand (in °C)" .
+
+
+###  http://w3id.org/glue/minServiceTemperature
+<http://w3id.org/glue/minServiceTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between a substrate and the minimum estimated temperature at which it can be used in a load-bearing component without oxidation (in °C)" .
+
+
+###  http://w3id.org/glue/minShearStrength
+<http://w3id.org/glue/minShearStrength> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                        rdfs:range xsd:float ;
+                                        rdfs:comment "A relation between an adhesive type and its minimum estimated shear strength (N/mm^2)" .
+
+
+###  http://w3id.org/glue/minSpecificHeatCapacity
+<http://w3id.org/glue/minSpecificHeatCapacity> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "A relation between a substrate and the minimum estimated amount of heat that must be added to one unit of its mass to cause an increase of one unit of temperature (in J/kg°C)" .
+
+
+###  http://w3id.org/glue/minStorageTemperature
+<http://w3id.org/glue/minStorageTemperature> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                             rdfs:range xsd:float ;
+                                             rdfs:comment "A relation between an adhesive and its minimum recommended storage temperature in °C" .
+
+
+###  http://w3id.org/glue/minSubstrateCost
+<http://w3id.org/glue/minSubstrateCost> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                        rdfs:range xsd:float ;
+                                        rdfs:comment "A relation between a substrate and the minimum estimated cost to acquire a kilo of it in euros" .
+
+
+###  http://w3id.org/glue/minThermalConductivity
+<http://w3id.org/glue/minThermalConductivity> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf <http://w3id.org/glue/thermalConductivity> ;
+                                              rdfs:comment "A relation between an adhesive or a substrate and a maximum estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/glue/minThermalExpansionCoefficient
+<http://w3id.org/glue/minThermalExpansionCoefficient> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                      rdfs:range xsd:float ;
+                                                      rdfs:comment "A relation between a substrate and an estimation of the minimum tendency of its matter to increase in length area, or volume in response to an increase in temperature (in μstrain/°C)" .
+
+
+###  http://w3id.org/glue/minToughness
+<http://w3id.org/glue/minToughness> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                    rdfs:range xsd:float ;
+                                    rdfs:comment "A relation between a substrate and the minimum estimation of its ability to absorb energy and plastically deform without fracturing (in kJ/m^2)" .
+
+
+###  http://w3id.org/glue/minViscosityHardener
+<http://w3id.org/glue/minViscosityHardener> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                            rdfs:range xsd:float ;
+                                            rdfs:comment "A relation between an adhesive and its minimum viscosity of the hardener in mPa.s" .
+
+
+###  http://w3id.org/glue/minViscosityResin
+<http://w3id.org/glue/minViscosityResin> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                         rdfs:range xsd:float ;
+                                         rdfs:comment "A relation between an adhesive and its minimum viscosity of the resin in mPa.s" .
+
+
+###  http://w3id.org/glue/minWaterAbsorption
+<http://w3id.org/glue/minWaterAbsorption> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                          rdfs:range xsd:float ;
+                                          rdfs:comment "A relation between a substrate and a minimum estimation of its ability to absorb water when immersed in it measured in percentage of water it absorbs in 24 hours" .
+
+
+###  http://w3id.org/glue/minWaterVaporTransmission
+<http://w3id.org/glue/minWaterVaporTransmission> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                 rdfs:range xsd:float ;
+                                                 rdfs:comment "A relation between a substrate and a minimum estimation of the passage of water vapor through it (in g*mm/m^2*day)" .
+
+
+###  http://w3id.org/glue/organicSolventResistance
+<http://w3id.org/glue/organicSolventResistance> rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                                rdfs:comment "A relation between an adhesive type or a substrate and its relative ability to withstand organic solvents" .
+
+
+###  http://w3id.org/glue/peelResistance
+<http://w3id.org/glue/peelResistance> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                      rdfs:range xsd:float ;
+                                      rdfs:comment "A relation between an adhesive and the peel resistance of its bonds (in N/mm)" .
+
+
+###  http://w3id.org/glue/polymerType
+<http://w3id.org/glue/polymerType> rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                   rdfs:range xsd:string ;
+                                   rdfs:comment "A relation between an adhesive type and its polymer type" .
+
+
+###  http://w3id.org/glue/resinHardenerRatio
+<http://w3id.org/glue/resinHardenerRatio> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                          rdfs:range xsd:float ;
+                                          rdfs:comment "A relation between an adhesive and its ratio between the volume of resin over the volume of hardener which should be mixed" .
+
+
+###  http://w3id.org/glue/saltWaterResistance
+<http://w3id.org/glue/saltWaterResistance> rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                           rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand salt water" .
+
+
+###  http://w3id.org/glue/sealingQuality
+<http://w3id.org/glue/sealingQuality> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                      rdfs:range xsd:string ;
+                                      rdfs:comment "A relation between an adhesive family and its relative effectiveness in preventing the passage of air, moisture, dust or other substances through a bonded joint" .
+
+
+###  http://w3id.org/glue/shearStrengthDegree
+<http://w3id.org/glue/shearStrengthDegree> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:comment "A relation between an adhesive type and the degree of its shear strength, classified as low, medium or high" .
+
+
+###  http://w3id.org/glue/shelfLife
+<http://w3id.org/glue/shelfLife> rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                 rdfs:range xsd:float ;
+                                 rdfs:comment "A relation between an adhesive and its maximum recommended time it can be stored (in months)" .
+
+
+###  http://w3id.org/glue/shockResistance
+<http://w3id.org/glue/shockResistance> rdf:type owl:DatatypeProperty ;
+                                       rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                       rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand shock" .
+
+
+###  http://w3id.org/glue/strongAlkalisResistance
+<http://w3id.org/glue/strongAlkalisResistance> rdf:type owl:DatatypeProperty ;
+                                               rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                               rdfs:comment "A relation between an adhesive type or substrate and its relative ability to withstand strong alkalis" .
+
+
+###  http://w3id.org/glue/substrateMaxElongation
+<http://w3id.org/glue/substrateMaxElongation> rdf:type owl:DatatypeProperty ;
+                                              rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                              rdfs:range xsd:float ;
+                                              rdfs:comment "A relation between a substrate and the its maximum ductility. It is expressed as a percentage, and it is the maximum ratio of change in axial length with the application of a tensile force to the original length of the specimen" .
+
+
+###  http://w3id.org/glue/substrateMaxYoungModulus
+<http://w3id.org/glue/substrateMaxYoungModulus> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between a substrate and the maximum estimated tensile or compressive stiffness when the force is applied lengthwise (in GPa)" .
+
+
+###  http://w3id.org/glue/substrateMinElongation
+<http://w3id.org/glue/substrateMinElongation> rdf:type owl:DatatypeProperty ;
+                                              rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                              rdfs:range xsd:float ;
+                                              rdfs:comment "A relation between a substrate and the its minimum ductility. It is expressed as a percentage, and it is the minimum ratio of change in axial length with the application of a tensile force to the original length of the specimen" .
+
+
+###  http://w3id.org/glue/substrateMinYoungModulus
+<http://w3id.org/glue/substrateMinYoungModulus> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                rdfs:range xsd:float ;
+                                                rdfs:comment "A relation between a substrate and the minimum estimated tensile or compressive stiffness when the force is applied lengthwise (in GPa)" .
+
+
+###  http://w3id.org/glue/substrateTensileStrengthLowerBound
+<http://w3id.org/glue/substrateTensileStrengthLowerBound> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                          rdfs:range xsd:float ;
+                                                          rdfs:comment "A relation between a substrate and the lower bound of the maximum amount of stress it can withstand while being stretched or pulled before breaking (in MPa)" .
+
+
+###  http://w3id.org/glue/substrateTensileStrengthUpperBound
+<http://w3id.org/glue/substrateTensileStrengthUpperBound> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                                          rdfs:range xsd:float ;
+                                                          rdfs:comment "A relation between a substrate and the upper bound of the maximum amount of stress it can withstand while being stretched or pulled before breaking (in MPa)" .
+
+
+###  http://w3id.org/glue/thermalConductivity
+<http://w3id.org/glue/thermalConductivity> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://w3id.org/glue/Adhesive> ,
+                                                       <http://w3id.org/glue/Substrate> ;
+                                           rdfs:range xsd:float ;
+                                           rdfs:comment "A relation between an adhesive or a substrate and an estimation of its ability to conduct heat (in W/m.°C)" .
+
+
+###  http://w3id.org/glue/transparency
+<http://w3id.org/glue/transparency> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Substrate> ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:comment "A relation between a substrate and a its quality of allowing light to pass through so that objects behind can be distinctly seen" .
+
+
+###  http://w3id.org/glue/uvResistance
+<http://w3id.org/glue/uvResistance> rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                    rdfs:comment "A relation between an adhesive type or a substrate and its relative ability to withstand uv radiation" .
+
+
+###  http://w3id.org/glue/vibrationsDamping
+<http://w3id.org/glue/vibrationsDamping> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <http://w3id.org/glue/AdhesiveFamily> ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:comment "A relation between an adhesive family and its relative ability to absorve vibrational energy" .
+
+
+###  http://w3id.org/glue/viscosityTemperatureValidity
+<http://w3id.org/glue/viscosityTemperatureValidity> rdf:type owl:DatatypeProperty ;
+                                                    rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                                    rdfs:range xsd:float ;
+                                                    rdfs:comment "A relation between an adhesive and the temperature validity of its viscosity in °C" .
+
+
+###  http://w3id.org/glue/waterResistance
+<http://w3id.org/glue/waterResistance> rdf:type owl:DatatypeProperty ;
+                                       rdfs:subPropertyOf <http://w3id.org/glue/environmentalResistance> ;
+                                       rdfs:comment "A relation between an adhesive type or substrate and its relative ability to resist water" .
+
+
+###  http://w3id.org/glue/youngModulus
+<http://w3id.org/glue/youngModulus> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://w3id.org/glue/Adhesive> ;
+                                    rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/Brand
+<http://schema.org/Brand> rdf:type owl:Class ;
+                          rdfs:label "Brand" .
+
+
+###  http://schema.org/Product
+<http://schema.org/Product> rdf:type owl:Class ;
+                            rdfs:label "Product" .
+
+
+###  http://w3id.org/glue/AdhesionApplication
+<http://w3id.org/glue/AdhesionApplication> rdf:type owl:Class ;
+                                           rdfs:comment "A task that an addhesive is typically used in." ;
+                                           rdfs:label "Adhesion Application" .
+
+
+###  http://w3id.org/glue/AdhesionQuality
+<http://w3id.org/glue/AdhesionQuality> rdf:type owl:Class ;
+                                       rdfs:comment "A quality estimation of an adhesive type" ;
+                                       rdfs:label "Adhesion Quality" .
+
+
+###  http://w3id.org/glue/Adhesive
+<http://w3id.org/glue/Adhesive> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://schema.org/Product> ;
+                                rdfs:comment "A non-metallic substance applied to one or both surface of two separate items that binds them together and resists their separation" ;
+                                rdfs:label "Adhesive" .
+
+
+###  http://w3id.org/glue/AdhesiveFamily
+<http://w3id.org/glue/AdhesiveFamily> rdf:type owl:Class ;
+                                      rdfs:comment "A family of common adhesives, categorized by method of adhesion." ;
+                                      rdfs:label "Adhesive Family" .
+
+
+###  http://w3id.org/glue/Industry
+<http://w3id.org/glue/Industry> rdf:type owl:Class ;
+                                rdfs:comment "A generally categorized brand of economic activity" ;
+                                rdfs:label "Industry" .
+
+
+###  http://w3id.org/glue/MaterialFamily
+<http://w3id.org/glue/MaterialFamily> rdf:type owl:Class ;
+                                      rdfs:comment "A category of materials that a substrate belongs in" ;
+                                      rdfs:label "Material Family" .
+
+
+###  http://w3id.org/glue/Solvent
+<http://w3id.org/glue/Solvent> rdf:type owl:Class ;
+                               rdfs:comment "A substance that dissolves a solute, resulting in a solution" ;
+                               rdfs:label "Solvent" .
+
+
+###  http://w3id.org/glue/Substrate
+<http://w3id.org/glue/Substrate> rdf:type owl:Class ;
+                                 rdfs:comment "A material surface" ;
+                                 rdfs:label "Substrate" .
+
+
+###  https://w3id.org/pmd/co/PMD_0000000
+<https://w3id.org/pmd/co/PMD_0000000> rdf:type owl:Class ;
+                                      rdfs:label "Material" .
+
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
